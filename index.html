@@ -20,7 +20,7 @@
     <div>
       <h1>キーボードテスト</h1>
       <div class="frame" id="gameArea">
-        <div>青色で表示されているキーを入力しましょう。</div>
+        <div id="state">青色で表示されているキーを入力しましょう。</div>
         <div id="target">
 
         </div>
@@ -39,10 +39,12 @@
       const ua = navigator.userAgent;
       if (ua.indexOf('iPhone') > -1 || (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') > -1)) {
         // スマートフォン
-        alert('スマートフォンやで');
+        alert('ごめんなさい、スマートフォンは未対応です＞＜');
+        $("#state").text("スマートフォンは未対応です＞＜");
       } else if (ua.indexOf('iPad') > -1 || ua.indexOf('Android') > -1) {
         // タブレット
-        alert('タブレットやで');
+        alert('ごめんなさい、タブレットは未対応です＞＜');
+        $("#state").text("タブレットは未対応です＞＜");
       } else {
         // PC
         prepareToGame();
