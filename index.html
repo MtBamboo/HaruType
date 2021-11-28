@@ -1,0 +1,381 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <!--meta name="viewport" content="width=device-width, user-scalable=no" /-->
+    <!--meta name="apple-mobile-web-app-capable" content="yes" /-->
+    <title>&#x1f308;RainbowClicker</title>
+
+    <!-- StyleSheet -->
+    <link rel="StyleSheet" type="text/css" href="./css/RainbowClicker.css">
+    <!-- JavaScript -->
+    <script type="text/javascript" src='./js/RainbowClicker.js'></script>
+
+  </head>
+  <body = onload="startApp()">
+    <div id="title">Rainbow Clicker</div>
+    <!-- Parameters -->
+    <div class="frame" id="params">
+      <div class="infoText">虹 <br>7種類のエッセンスが揃っていると作れるよ。</div>
+      <table width="100%">
+        <tbody>
+          <tr id="rainbowBox">
+            <td class="oNameText">&#x1f308;Rainbow</td>
+            <td class="buy1button">
+              <button id="rainbowMakeButton" onclick="singleRainbowMakeButtonClick(1)">Make:1</button>
+            </td>
+            <td id="rainbowCounter" class="counterText">0</td>
+          </tr>
+          <tr id="diamondBox" hidden="true">
+            <td class="oNameText">&#x1f48e;Diamond</td>
+            <td class="buy1button">
+              <button id="diamondMakeButton" onclick="singleDiamondMakeButtonClick()">Make:1</button>
+            </td>
+            <td id="diamondCounter" class="counterText">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="frame" id="colors">
+      <div class="infoText">エッセンス <br>ジェネレーターや次のエッセンスを作れるよ。</div>
+      <table width="100%">
+        <tbody>
+          <!-- red -->
+          <tr id="redEssenceBox" class="redText">
+            <td class="oNameText">&#x1f353;RedEssence</td>
+            <td class="buy1button">
+              <button onclick="singleEssenceMakeButtonClick(0)">Make:1</button>
+            </td>
+            <td id="redEssenceCounter" class="counterText">0</td>  
+          </tr>
+          <!-- orange -->
+          <tr id="orangeEReleaseButtonBox">
+            <td class="oNameText">Release&#x1f34a;</td>
+            <td class="buy1button">
+              <button id="orangeEReleaseButton" onclick="releaseNextEssenceButtonClick(1)">cost:&#x1f353;10</button>
+            </td>
+          </tr>
+          <tr id="orangeEssenceBox" class="orangeText" hidden="true">
+            <td class="oNameText">&#x1f34a;OrangeEssence</td>
+            <td class="buy1button">
+              <button onclick="singleEssenceMakeButtonClick(1)">Make:1</button>
+            </td>
+            <td id="orangeEssenceCounter" class="counterText">0</td>  
+          </tr>
+          <!-- yellow -->
+          <tr id="yellowEReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f34b;</td>
+            <td class="buy1button">
+              <button id="yellowEReleaseButton" onclick="releaseNextEssenceButtonClick(2)">cost:&#x1f34a;10</button>
+            </td>
+          </tr>
+          <tr id="yellowEssenceBox" class="yellowText" hidden="true">
+            <td class="oNameText">&#x1f34b;YellowEssence</td>
+            <td class="buy1button">
+              <button onclick="singleEssenceMakeButtonClick(2)">Make:1</button>
+            </td>
+            <td id="yellowEssenceCounter" class="counterText">0</td>  
+          </tr>
+          <!-- green -->
+          <tr id="greenEReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f34f;</td>
+            <td class="buy1button">
+              <button id="greenEReleaseButton" onclick="releaseNextEssenceButtonClick(3)">cost:&#x1f34b;10</button>
+            </td>
+          </tr>
+          <tr id="greenEssenceBox" class="greenText" hidden="true">
+            <td class="oNameText">&#x1f34f;GreenEssence</td>
+            <td class="buy1button">
+              <button onclick="singleEssenceMakeButtonClick(3)">Make:1</button>
+            </td>
+            <td  id="greenEssenceCounter" class="counterText">0</td>  
+          </tr>
+          <!-- blue -->
+          <tr id="blueEReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f41f;</td>
+            <td class="buy1button">
+              <button id="blueEReleaseButton" onclick="releaseNextEssenceButtonClick(4)">cost:&#x1f34f;10</button>
+            </td>
+          </tr>
+          <tr id="blueEssenceBox" class="blueText" hidden="true">
+            <td class="oNameText">&#x1f41f;BlueEssence</td>
+            <td class="buy1button">
+              <button onclick="singleEssenceMakeButtonClick(4)">Make:1</button>
+            </td>
+            <td id="blueEssenceCounter" class="counterText">0</td>  
+          </tr>
+          <!-- indigo -->
+          <tr id="indigoEReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f9ff;</td>
+            <td class="buy1button">
+              <button id="indigoEReleaseButton" onclick="releaseNextEssenceButtonClick(5)">cost:&#x1f41f;10</button>
+            </td>
+          </tr>
+          <tr id="indigoEssenceBox" class="indigoText" hidden="true">
+            <td class="oNameText">&#x1f9ff;IndigoEssence</td>
+            <td class="buy1button">
+              <button onclick="singleEssenceMakeButtonClick(5)">Make:1</button>
+            </td>
+            <td id="indigoEssenceCounter" class="counterText">0</td>  
+          </tr>
+          <!-- purple -->
+          <tr id="purpleEReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f346;</td>
+            <td class="buy1button">
+              <button id="purpleEReleaseButton" onclick="releaseNextEssenceButtonClick(6)">cost:&#x1f9ff;10</button>
+            </td>
+          </tr>
+          <tr id="purpleEssenceBox" class="purpleText" hidden="true">
+            <td class="oNameText">&#x1f346;PurpleEssence</td>
+            <td class="buy1button">
+              <button  onclick="singleEssenceMakeButtonClick(6)">Make:1</button>
+            </td>
+            <td id="purpleEssenceCounter" class="counterText">0</td>  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="frame" id="generator">
+      <div >ジェネレーター <br>自動でエッセンスを作ってくれるよ。</div>
+      <table width="100%">
+        <tbody>
+          <!-- red -->
+          <tr id="redGReleaseButtonBox">
+            <td class="oNameText">Release&#x1F469;&zwj;&#x1F33E;&#x1f353;</td>
+            <td class="buy1button">
+              <button id="redGReleaseButton" onclick="releaseNextGeneratorButtonClick(0)">cost:&#x1f353;10</button>
+            </td>
+          </tr>
+          <tr id="redGeneratorBox" class="redText" hidden="true">
+            <td class="oNameText">&#x1F469;&zwj;&#x1F33E;&#x1f353;RedGenerator</td>
+            <td class="buy1button">
+              <button id="redGeneratorButton" onclick="singleGeneratorMakeButtonClick(0)" disabled="true">cost:&#x1f353;10</button>
+            </td>
+            <td class="geneRateText" id="redGeneRateText">0/sec</td>
+            <td id="redGeneratorCounter" class="counterText">0</td>  
+          </tr>
+          <!-- orange -->
+          <tr id="orangeGReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f332;&#x1f34a;</td>
+            <td class="buy1button">
+              <button id="orangeGReleaseButton" onclick="releaseNextGeneratorButtonClick(1)">cost:&#x1f34a;10</button>
+            </td>
+          </tr>
+          <tr id="orangeGeneratorBox" class="orangeText" hidden="true">
+            <td class="oNameText">&#x1f332;&#x1f34a;OrangeGenerator</td>
+            <td class="buy1button">
+              <button id="orangeGeneratorButton" onclick="singleGeneratorMakeButtonClick(1)" disabled="true">cost:&#x1f34a;10</button>
+            </td>
+            <td class="geneRateText" id="orangeGeneRateText">0/sec</td>
+            <td id="orangeGeneratorCounter" class="counterText">0</td>  
+          </tr>
+          <!-- yellow -->
+          <tr id="yellowGReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f332;&#x1f34b;</td>
+            <td class="buy1button">
+              <button id="yellowGReleaseButton" onclick="releaseNextGeneratorButtonClick(2)">cost:&#x1f34b;10</button>
+            </td>
+          </tr>
+          <tr id="yellowGeneratorBox" class="yellowText" hidden="true">
+            <td class="oNameText">&#x1f332;&#x1f34b;YellowGenerator</td>
+            <td class="buy1button">
+              <button id="yellowGeneratorButton" onclick="singleGeneratorMakeButtonClick(2)" disabled="true">cost:&#x1f34b;10</button>
+            </td>
+            <td class="geneRateText" id="yellowGeneRateText">0/sec</td>
+            <td id="yellowGeneratorCounter" class="counterText">0</td>  
+          </tr>
+          <!-- green -->
+          <tr id="greenGReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f332;&#x1f34f;</td>
+            <td class="buy1button">
+              <button id="greenGReleaseButton" onclick="releaseNextGeneratorButtonClick(3)">cost:&#x1f34f;10</button>
+            </td>
+          </tr>
+          <tr id="greenGeneratorBox"  class="greenText" hidden="true">
+            <td class="oNameText">&#x1f332;&#x1f34f;GreenGenerator</td>
+            <td class="buy1button">
+              <button id="greenGeneratorButton" onclick="singleGeneratorMakeButtonClick(3)" disabled="true">cost:&#x1f34f;10</button>
+            </td>
+            <td class="geneRateText" id="greenGeneRateText">0/sec</td>
+            <td  id="greenGeneratorCounter" class="counterText">0</td>  
+          </tr>
+          <!-- blue -->
+          <tr id="blueGReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f3a3;&#x1f41f;</td>
+            <td class="buy1button">
+              <button id="blueGReleaseButton" onclick="releaseNextGeneratorButtonClick(4)">cost:&#x1f41f;10</button>
+            </td>
+          </tr>
+          <tr id="blueGeneratorBox" class="blueText" hidden="true">
+            <td class="oNameText">&#x1f3a3;&#x1f41f;BlueGenerator</td>
+            <td class="buy1button">
+              <button id="blueGeneratorButton" onclick="singleGeneratorMakeButtonClick(4)" disabled="true">cost:&#x1f41f;10</button>
+            </td>
+            <td class="geneRateText" id="blueGeneRateText">0/sec</td>
+            <td id="blueGeneratorCounter" class="counterText">0</td>  
+          </tr>
+          <!-- indigo -->
+          <tr id="indigoGReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f9ff;&#x1f9ff;</td>
+            <td class="buy1button">
+              <button id="indigoGReleaseButton" onclick="releaseNextGeneratorButtonClick(5)">cost:&#x1f9ff;10</button>
+            </td>
+          </tr>
+          <tr id="indigoGeneratorBox" class="indigoText" hidden="true">
+            <td class="oNameText">&#x1f9ff;&#x1f9ff;IndigoGenerator</td>
+            <td class="buy1button">
+              <button id="indigoGeneratorButton" onclick="singleGeneratorMakeButtonClick(5)" disabled="true">cost:&#x1f9ff;10</button>
+            </td>
+            <td class="geneRateText" id="indigoGeneRateText">0/sec</td>
+            <td id="indigoGeneratorCounter" class="counterText">0</td>  
+          </tr>
+          <!-- purple -->
+          <tr id="purpleGReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1F469;&zwj;&#x1F33E;&#x1f346;</td>
+            <td class="buy1button">
+              <button id="purpleGReleaseButton" onclick="releaseNextGeneratorButtonClick(6)">cost:&#x1f346;10</button>
+            </td>
+          </tr>
+          <tr id="purpleGeneratorBox" class="purpleText" hidden="true">
+            <td class="oNameText">&#x1F469;&zwj;&#x1F33E;&#x1f346;PurpleGenerator</td>
+            <td class="buy1button">
+              <button id="purpleGeneratorButton" onclick="singleGeneratorMakeButtonClick(6)" disabled="true">cost:&#x1f346;10</button>
+            </td>
+            <td class="geneRateText" id="purpleGeneRateText">0/sec</td>
+            <td id="purpleGeneratorCounter" class="counterText">0</td>  
+          </tr>
+          <tr id="allGeneratorBox">
+            <td class="oNameText">&#x1F468;&zwj;&#x1F3A8;&#x1F469;&zwj;&#x1F3A8;AllGenerator</td>
+            <td class="buy1button">
+              <button id="allGeneratorButton" onclick="allGeneratorMakeButtonClick()" disabled="true">Cost:&#x1f308;1</button>
+            </td>
+            <td class="geneRateText" id="allGeneRateText">0/sec</td>
+            <td id="allGeneratorCounter" class="counterText" >0</td>  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+        <div class="frame" id="factory">
+      <div >ファクトリー <br>自動でジェネレーターを作ってくれるよ。</div>
+      <table width="100%">
+        <tbody>
+          <!-- red -->
+          <tr id="redFReleaseButtonBox">
+            <td class="oNameText">Release&#x1f3ed;&#x1f353;</td>
+            <td class="buy1button">
+              <button id="redFReleaseButton" onclick="releaseNextFactoryButtonClick(0)">cost:&#x1F469;&zwj;&#x1F33E;&#x1f353;10</button>
+            </td>
+          </tr>
+          <tr id="redFactoryBox" class="redText" hidden="true">
+            <td class="oNameText">&#x1f3ed;&#x1f353;RedFactory</td>
+            <td class="buy1button">
+              <button id="redFactoryButton" onclick="singleFactoryMakeButtonClick(0)" disabled="true">cost:&#x1F469;&zwj;&#x1F33E;&#x1f353;10</button>
+            </td>
+            <td class="geneRateText" id="redFacRateText">0/sec</td>
+            <td id="redFactoryCounter" class="counterText">0</td>  
+          </tr>
+          <!-- orange -->
+          <tr id="orangeFReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f3ed;&#x1f34a;</td>
+            <td class="buy1button">
+              <button id="orangeFReleaseButton" onclick="releaseNextFactoryButtonClick(1)">cost:&#x1f332;&#x1f34a;10</button>
+            </td>
+          </tr>
+          <tr id="orangeFactoryBox" class="orangeText" hidden="true">
+            <td class="oNameText">&#x1f3ed;&#x1f34a;OrangeFactory</td>
+            <td class="buy1button">
+              <button id="orangeFactoryButton" onclick="singleFactoryMakeButtonClick(1)" disabled="true">cost:&#x1f332;&#x1f34a;10</button>
+            </td>
+            <td class="geneRateText" id="orangeFacRateText">0/sec</td>
+            <td id="orangeFactoryCounter" class="counterText">0</td>  
+          </tr>
+          <!-- yellow -->
+          <tr id="yellowFReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f3ed;&#x1f34b;</td>
+            <td class="buy1button">
+              <button id="yellowFReleaseButton" onclick="releaseNextFactoryButtonClick(2)">cost:&#x1f332;&#x1f34b;10</button>
+            </td>
+          </tr>
+          <tr id="yellowFactoryBox" class="yellowText" hidden="true">
+            <td class="oNameText">&#x1f3ed;&#x1f34b;YellowFactory</td>
+            <td class="buy1button">
+              <button id="yellowFactoryButton" onclick="singleFactoryMakeButtonClick(2)" disabled="true">cost:&#x1f332;&#x1f34b;10</button>
+            </td>
+            <td class="geneRateText" id="yellowFacRateText">0/sec</td>
+            <td id="yellowFactoryCounter" class="counterText">0</td>  
+          </tr>
+          <!-- green -->
+          <tr id="greenFReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f3ed;&#x1f34f;</td>
+            <td class="buy1button">
+              <button id="greenFReleaseButton" onclick="releaseNextFactoryButtonClick(3)">cost:&#x1f332;&#x1f34f;10</button>
+            </td>
+          </tr>
+          <tr id="greenFactoryBox"  class="greenText" hidden="true">
+            <td class="oNameText">&#x1f3ed;&#x1f34f;GreenFactory</td>
+            <td class="buy1button">
+              <button id="greenFactoryButton" onclick="singleFactoryMakeButtonClick(3)" disabled="true">cost:&#x1f332;&#x1f34f;10</button>
+            </td>
+            <td class="geneRateText" id="greenFacRateText">0/sec</td>
+            <td  id="greenFactoryCounter" class="counterText">0</td>  
+          </tr>
+          <!-- blue -->
+          <tr id="blueFReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f3ed;&#x1f41f;</td>
+            <td class="buy1button">
+              <button id="blueFReleaseButton" onclick="releaseNextFactoryButtonClick(4)">cost:&#x1f3a3;&#x1f41f;10</button>
+            </td>
+          </tr>
+          <tr id="blueFactoryBox" class="blueText" hidden="true">
+            <td class="oNameText">&#x1f3ed;&#x1f41f;BlueFactory</td>
+            <td class="buy1button">
+              <button id="blueFactoryButton" onclick="singleFactoryMakeButtonClick(4)" disabled="true">cost:&#x1f3a3;&#x1f41f;10</button>
+            </td>
+            <td class="geneRateText" id="blueFacRateText">0/sec</td>
+            <td id="blueFactoryCounter" class="counterText">0</td>  
+          </tr>
+          <!-- indigo -->
+          <tr id="indigoFReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f3ed;&#x1f9ff;</td>
+            <td class="buy1button">
+              <button id="indigoFReleaseButton" onclick="releaseNextFactoryButtonClick(5)">cost:&#x1f3ed;&#x1f9ff;10</button>
+            </td>
+          </tr>
+          <tr id="indigoFactoryBox" class="indigoText" hidden="true">
+            <td class="oNameText">&#x1f3ed;&#x1f9ff;IndigoFactory</td>
+            <td class="buy1button">
+              <button id="indigoFactoryButton" onclick="singleFactoryMakeButtonClick(5)" disabled="true">cost:&#x1f3ed;&#x1f9ff;10</button>
+            </td>
+            <td class="geneRateText" id="indigoFacRateText">0/sec</td>
+            <td id="indigoFactoryCounter" class="counterText">0</td>  
+          </tr>
+          <!-- purple -->
+          <tr id="purpleFReleaseButtonBox" hidden="true">
+            <td class="oNameText">Release&#x1f3ed;&#x1f346;</td>
+            <td class="buy1button">
+              <button id="purpleFReleaseButton" onclick="releaseNextFactoryButtonClick(6)">cost:&#x1F469;&zwj;&#x1F33E;&#x1f346;10</button>
+            </td>
+          </tr>
+          <tr id="purpleFactoryBox" class="purpleText" hidden="true">
+            <td class="oNameText">&#x1f3ed;&#x1f346;PurpleFactory</td>
+            <td class="buy1button">
+              <button id="purpleFactoryButton" onclick="singleFactoryMakeButtonClick(6)" disabled="true">cost:&#x1F469;&zwj;&#x1F33E;&#x1f346;10</button>
+            </td>
+            <td class="geneRateText" id="purpleFacRateText">0/sec</td>
+            <td id="purpleFactoryCounter" class="counterText">0</td>  
+          </tr>
+          <tr id="allFactoryBox">
+            <td class="oNameText">&#x1f47c;&#x1f47c;RainbowFactory</td>
+            <td class="buy1button">
+              <button id="allFactoryButton" onclick="allFactoryMakeButtonClick()" disabled="true">Cost:&#x1f308;10</button>
+            </td>
+            <td class="geneRateText" id="allFacRateText">0/sec</td>
+            <td id="allFactoryCounter" class="counterText" >0</td>  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
