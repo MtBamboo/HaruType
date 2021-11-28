@@ -36,11 +36,17 @@
     var targetArray = ["a","b","c","d","e","f","g","h","i","j"];
     const targetNum = 10;
     $(document).ready(function(){
-      for(var i=0; i< 10; i++)
-      {
-        $("#target").append("<font color='silver'>"+targetArray[i]+"</font>");
+      const ua = navigator.userAgent;
+      if (ua.indexOf('iPhone') > -1 || (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') > -1)) {
+        // スマートフォン
+        alert('スマートフォンやで');
+      } else if (ua.indexOf('iPad') > -1 || ua.indexOf('Android') > -1) {
+        // タブレット
+        alert('タブレットやで');
+      } else {
+        // PC
+        prepareToGame();
       }
-      updateColor(targetIndex,"blue");
     });
 
     $(window).keydown(function(event){
@@ -62,6 +68,16 @@
         updateColor(targetIndex,"red");
       }
     });
+
+    function prepareToGame()
+    {
+      for(var i=0; i< 10; i++)
+      {
+        $("#target").append("<font color='silver'>"+targetArray[i]+"</font>");
+      }
+      updateColor(targetIndex,"blue");      
+    }
+
     function updateColor(index,color)
     {
       $("font").eq(index).css("color", color);
