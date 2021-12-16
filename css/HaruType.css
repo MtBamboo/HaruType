@@ -1,0 +1,34 @@
+
+
+/* class */
+.frame
+{
+	margin: 10px 5px;
+	padding: 10px 5px;
+	border:solid 2px;
+	border-color: silver;
+	border-radius: 4px;
+	background-color: #FFFFEE;
+	color: indigo;
+}
+
+/* color Text */
+.redText
+{
+	color: #c6001c;
+}
+
+
+/* id */
+#titleBox
+{
+	text-align: center;
+}
+
+#mainArea
+{
+	background-color: lightcyan;
+	width: 1280px;
+	height: 720px;
+	align-content: center;
+}

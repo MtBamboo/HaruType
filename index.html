@@ -1,88 +1,49 @@
-<!doctype html>
+﻿<!doctype html>
 
 <html>
   <head>
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1">
-    <title>KeyboardTest</title>
+    <title>HaruType</title>
 
     <!-- StyleSheet -->
-    <link rel="StyleSheet" type="text/css" href="./css/KeyboardTest.css">
+    <link rel="StyleSheet" type="text/css" href="./css/HaruType.css">
     <!-- JavaScript -->
-     <!-- mine -->
-    <!--script type="text/javascript" src='./js/RainbowClicker.js'></script-->
      <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <!-- mine -->
+    <script type="text/javascript" src='./js/Data.js' charset='utf-8'></script>
+    <script type="text/javascript" src='./js/HaruType.js' charset='utf-8'></script>    
   </head>
 
   <!--body = onload="startApp()"-->
   <body>
-    <div>
-      <h1>キーボードテスト</h1>
-      <div class="frame" id="gameArea">
-        <div id="state">青色で表示されているキーを入力しましょう。</div>
-        <div id="target">
+    <div id="mainArea">
+      <div id="titleBox">
+        <h1>★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★</h1>
+        <h1>★　　　　　　　　　晴彦のタイプトレーナー　　　　　　　　　★</h1>
+        <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
+        <h1>★　　　　　　　　　　　　　　　　　　　　　　　　　　　　　★</h1>
+        <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
+        <h1>★　　　　　　　　　　　　　　　　　　　　　　　　　　　　　★</h1>
+        <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
+        <h1>★　　　　　　　　　　　　　　　　　　　　　　　　　　　　　★</h1>
+        <h1>★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★</h1>
+        <div id="seedBox">seed:</div>
+      </div>
+      <div id="typingBox" style="background-color: green; width: 1280px; height: 30px;">
+        <h1>タイピング</h1>
+        <div class="frame" id="gameArea">
+          <div id="state">青色で表示されているキーを入力しましょう。</div>
+          <div id="target">
 
-        </div>
-        <hr>
-        <div id="collect">
+          </div>
+          <hr>
+          <div id="collect">
           
+          </div>
         </div>
       </div>
     </div>
   </body>
-  <script >
-    var targetIndex = 0;
-    var targetArray = ["a","b","c","d","e","f","g","h","i","j"];
-    const targetNum = 10;
-    $(document).ready(function(){
-      const ua = navigator.userAgent;
-      if (ua.indexOf('iPhone') > -1 || (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') > -1)) {
-        // スマートフォン
-        alert('ごめんなさい、スマートフォンは未対応です＞＜');
-        $("#state").text("スマートフォンは未対応です＞＜");
-      } else if (ua.indexOf('iPad') > -1 || ua.indexOf('Android') > -1) {
-        // タブレット
-        alert('ごめんなさい、タブレットは未対応です＞＜');
-        $("#state").text("タブレットは未対応です＞＜");
-      } else {
-        // PC
-        prepareToGame();
-      }
-    });
-
-    $(window).keydown(function(event){
-      var inp = event.key;
-      if(inp == targetArray[targetIndex])
-      {
-        updateColor(targetIndex,"gray");
-        $("#collect").append(targetArray[targetIndex]);
-        targetIndex++;
-        if(targetIndex == targetNum)
-        {
-          $("#gameArea").append("<div align='center'>おめでとうございます！</div>");
-        }
-        else {
-          updateColor(targetIndex,"blue");
-        }
-      }
-      else {
-        updateColor(targetIndex,"red");
-      }
-    });
-
-    function prepareToGame()
-    {
-      for(var i=0; i< 10; i++)
-      {
-        $("#target").append("<font color='silver'>"+targetArray[i]+"</font>");
-      }
-      updateColor(targetIndex,"blue");      
-    }
-
-    function updateColor(index,color)
-    {
-      $("font").eq(index).css("color", color);
-    }
-  </script>
 </html>
