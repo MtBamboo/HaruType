@@ -1,6 +1,7 @@
 
-
-/* class */
+/*********
+ * class *
+ *********/
 .frame
 {
 	margin: 10px 5px;
@@ -12,23 +13,30 @@
 	color: indigo;
 }
 
-/* color Text */
-.redText
+.box
 {
-	color: #c6001c;
+	width: 1280px;
+	height: 720px;
 }
 
-
-/* id */
-#titleBox
-{
-	text-align: center;
-}
-
+/******
+ * id *
+ ******/
 #mainArea
 {
 	background-color: lightcyan;
-	width: 1280px;
-	height: 720px;
 	align-content: center;
+	margin: auto;
+}
+
+#titleBox
+{
+	text-align: center;
+	align-items: center;
+}
+
+#titleLetter
+{
+	top: 0px;
+	position: absolute;
 }

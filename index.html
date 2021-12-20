@@ -18,29 +18,40 @@
 
   <!--body = onload="startApp()"-->
   <body>
-    <div id="mainArea">
-      <div id="titleBox">
-        <h1>★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★</h1>
-        <h1>★　　　　　　　　　晴彦のタイプトレーナー　　　　　　　　　★</h1>
-        <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
-        <h1>★　　　　　　　　　　　　　　　　　　　　　　　　　　　　　★</h1>
-        <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
-        <h1>★　　　　　　　　　　　　　　　　　　　　　　　　　　　　　★</h1>
-        <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
-        <h1>★　　　　　　　　　　　　　　　　　　　　　　　　　　　　　★</h1>
-        <h1>★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★</h1>
-        <div id="seedBox">seed:</div>
+    <div id="mainArea" class="box">
+      <div id="titleBox" class="box">
+        <div id="titleBack" class="box" style="margin: auto; padding: auto;">
+          <h1>　</h1>
+          <h1>★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★</h1>
+          <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
+          <h1>★　　　　　　　　　　　　　　　　　　　　　　　　　　　　　★</h1>
+          <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
+          <h1>★　　　　　　　　　　　　　　　　　　　　　　　　　　　　　★</h1>
+          <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
+          <h1>★　　　　　　　　　　　　　　　　　　　　　　　　　　　　　★</h1>
+          <h1>☆　　　　　　　　　　　　　　　　　　　　　　　　　　　　　☆</h1>
+          <h1>★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★</h1>
+        </div>
+        <div id="titleLetter" class="box">
+          <h1>　</h1>
+          <h1>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</h1>
+          <h1>晴彦のタイプトレーナー</h1>
+          <h1>目指せ1分150文字入力！</h1>
+          <h1>　</h1>
+          <h1>　</h1>
+          <h1>Enterキーを押すとメニューへ移動します。</h1>
+          <h1>(MIKATYPE様のオマージュです。)</h1>
+          <h1>　</h1>
+          <h1>　</h1>
+        </div>
       </div>
-      <div id="typingBox" style="background-color: green; width: 1280px; height: 30px;">
-        <h1>タイピング</h1>
-        <div class="frame" id="gameArea">
-          <div id="state">青色で表示されているキーを入力しましょう。</div>
+      <div id="menuBox">
+      </div>
+      <div id="gameBox">
+        <div class="frame" id="typingArea">
+          <div id="state">一文字目入力で開始します。</div>
           <div id="target">
 
-          </div>
-          <hr>
-          <div id="collect">
-          
           </div>
         </div>
       </div>
