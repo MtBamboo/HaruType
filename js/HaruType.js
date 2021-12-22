@@ -1,6 +1,6 @@
 ﻿
 /* 定数 */
-const TIME_MAX = 5;
+const TIME_MAX = 60;
 
 /* 関数 */
 // 初期化
@@ -83,6 +83,7 @@ var Scenes =
   game : 2
 };
 
+// ゲームシーンの更新
 var gameScene;
 function updateGameScene(scene)
 {
@@ -210,13 +211,14 @@ function updateScore(val)
   }
 }
 
+// ツイートボタン
 function tweetBtn()
 {
-  var url = "";
-  var text = "HaruTypeで1分に"+targetIndex+"文字入力を達成しました。&#x1f973;";
+  var url = "https://mtbamboo.github.io/HaruType/index.html";
+  var text = "HaruTypeで1分に"+targetIndex+"文字入力を達成しました!";
   if(targetIndex >= 150)
   {
-    text += "すごい&#x1f973;";
+    text += "すごい🥳";
   }
 
   window.open().location.href = ("https://twitter.com/share?url=" + url + "&text=" + text + "&count=none&lang=ja");
