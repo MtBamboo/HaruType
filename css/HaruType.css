@@ -40,3 +40,30 @@
 	top: 0px;
 	position: absolute;
 }
+
+#typingArea
+{
+	padding: 20px 150px;
+}
+
+#score
+{
+	color: forestgreen;
+	font-size: 20px;
+}
+
+#miss
+{
+	color: mediumvioletred;
+	font-size: 20px;
+}
+
+#target
+{
+	font-size: 30px;
+}
+
+#resultBox
+{
+	visibility: hidden;
+}

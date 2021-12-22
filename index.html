@@ -39,7 +39,7 @@
           <h1>目指せ1分150文字入力！</h1>
           <h1>　</h1>
           <h1>　</h1>
-          <h1>Enterキーを押すとメニューへ移動します。</h1>
+          <h1>何かキーを押すと開始します。</h1>
           <h1>(MIKATYPE様のオマージュです。)</h1>
           <h1>　</h1>
           <h1>　</h1>
@@ -48,10 +48,14 @@
       <div id="menuBox">
       </div>
       <div id="gameBox">
-        <div class="frame" id="typingArea">
-          <div id="state">一文字目入力で開始します。</div>
-          <div id="target">
-
+        <div id="typingArea">
+          <h1>一文字目入力で開始します。<br>単語の間はスペースを、大文字はShiftキーと入力してください。</h1>
+          <p id="score"/>
+          <p id="miss"/>
+          <div id="target"></div>
+          <div id="resultBox">
+            <h1 id="result">もう一度遊ぶにはEnterキーを押してください。</h1>
+            <button id="tweet" onclick="tweetBtn();">ツイートする</button>
           </div>
         </div>
       </div>

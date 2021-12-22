@@ -1,4 +1,7 @@
 ﻿
+/* 定数 */
+const TIME_MAX = 5;
+
 /* 関数 */
 // 初期化
 $(document).ready(function(){
@@ -15,6 +18,7 @@ $(document).ready(function(){
     // PC
     prepareToGame(0);
     updateGameScene(0);
+    updateScore(0);
 /*
   // URLにシード値を持たせて同じタイピング内容で遊べるように検討しようとした名残
     var urlPrm = new Object;
@@ -39,6 +43,7 @@ function prepareToGame(kind)
 {
   wholeArray = "";
   var targetArray;
+  $("#target").empty();
   switch(kind)
   {
     case 0:
@@ -58,14 +63,14 @@ function prepareToGame(kind)
   }
 
   wholeArray += targetArray[0];
-  for(var i=1; i < 5; i++)
+  for(var i=1; i < 50; i++)
   {
     wholeArray+=(" " + targetArray[i]);
   }
 
   for(var i=0; i < wholeArray.length; i++)
   {
-    $("#target").append("<font color='silver'>"+wholeArray.charAt(i)+"</font>");
+    $("#target").append("<font color='silver' style='font-family=monospace, serif;'>"+wholeArray.charAt(i)+"</font>");
   }
   updateColor(targetIndex,"blue",true);
 }
@@ -89,7 +94,9 @@ function updateGameScene(scene)
 
 // 入力判定
 var targetIndex = 0;
-$(window).keydown(function(event){
+var missCount = 0;
+$(window).keydown(function(event)
+{
   var inp = event.key;
 
   if(gameScene == Scenes.title)
@@ -104,13 +111,22 @@ $(window).keydown(function(event){
   }
   else if(gameScene == Scenes.game)
   {
-    //if(inp == event.shiftKey)
-    if(inp == "Shift")
+    if(endFlag)
+    {
+      if(inp == "Enter")
+      {
+        // 復帰処理
+        restartGame();
+      }
+      return;
+    }
+    else if(inp == "Shift")
     {
       // 大文字対応、Shiftキー押下時は何もしない
     }
     else if(inp == wholeArray.charAt(targetIndex))
     {
+      startGame();
       updateColor(targetIndex,"gray");
       targetIndex++;
       if(targetIndex == wholeArray.length)
@@ -123,6 +139,7 @@ $(window).keydown(function(event){
       }
     }
     else {
+      missCount++;
       updateColor(targetIndex,"red", true);
     }
   }
@@ -140,4 +157,67 @@ function updateColor(index,color,ub)
   }else{
     letter.css("textDecoration","none");
   }
+}
+
+// ゲーム開始
+var gameFlag = false;
+var endFlag = false;
+var time=0;
+var timer;
+function startGame()
+{
+  if(gameFlag)
+  {
+    return;
+  }
+  gameFlag = true;
+  time = 0;
+  timer = setInterval(updateScore,1000,1);
+}
+
+// ゲーム終了
+function endGame()
+{
+  endFlag = true;
+  clearInterval(timer);
+  $("#resultBox").css('visibility','visible');
+}
+
+// ゲーム再開
+function restartGame()
+{
+  gameFlag = false;
+  endFlag = false;
+  time = 0;
+  targetIndex = 0;
+  missCount = 0;
+  $("#resultBox").css('visibility','hidden');
+  prepareToGame(0);
+  updateScore(0);
+}
+
+// スコア更新
+function updateScore(val)
+{
+  time += val;
+  var score = time == 0 ? 0 : Math.round(targetIndex * 60 / time);
+  $("#score").html("制限時間60秒　　経過時間:" + time + "　　入力文字数:" + targetIndex + "　　入力速度:" + score + "/分");
+  $("#miss").html("ミスタイプ:" + missCount);
+
+  if(time >= TIME_MAX)
+  {
+    endGame();
+  }
+}
+
+function tweetBtn()
+{
+  var url = "";
+  var text = "HaruTypeで1分に"+targetIndex+"文字入力を達成しました。&#x1f973;";
+  if(targetIndex >= 150)
+  {
+    text += "すごい&#x1f973;";
+  }
+
+  window.open().location.href = ("https://twitter.com/share?url=" + url + "&text=" + text + "&count=none&lang=ja");
 }
